@@ -1,7 +1,7 @@
 "use client";
 import heroBgMobile from "../public/homepage/hero-bg-mobile@2x.jpg"
 import heroBgTablet from "../public/homepage/hero-bg-tablet@2x.jpg"
-import heroBgDesktop from "../public/homepage/hero-bg-desktop.jpg"
+import heroBgDesktop from "../public/homepage/hero-bg-desktop@2x.jpg"
 import Image from "next/image";
 import dine from "../public/logo.svg"
 import enjoyablePlaceMobile from "../public/homepage/enjoyable-place-mobile.jpg"
@@ -32,6 +32,8 @@ import readyBgTablet from "../public/homepage/ready-bg-tablet.jpg"
 import Footer from "@/app/ui/Layout/Footer";
 import {useEffect, useState} from "react";
 import {ready} from "next/dist/build/output/log";
+import Header from "@/app/ui/Layout/Header";
+
 
 
 export default function Home() {
@@ -103,30 +105,10 @@ export default function Home() {
         {deviceSize === 'medium' && <Image src={heroBgTablet} alt={'herobg tablet'}/> }
         {deviceSize === 'small' && <Image src={heroBgMobile} alt={'herobg mobile'}/> }
         {/*Overlay elements*/}
-        <div className={'absolute text-white lg:items-start lg:w-1/3 bg-codGray md:max-w-screen md:mx-auto z-10 top-0 mt-[220px] md:mt-[400px] w-full max-w-screen-xl h-fit flex flex-col items-center lg:max-w-screen'}>
-            <div className={'mt-5  '}>
-                <Image src={dine} alt={"dine logo"} />
-            </div>
-            <div className={"mt-3 "}>
-            <div className={"flex  flex-col   items-center "}>
-                <h1 className={"headingXL"}>
-                    Exquisite dining
-                </h1>
-                <h1 className={"headingXL"}>since 1989</h1>
-            </div>
-                <div className={"text-center mx-3 mt-[21px] md:w-[573px] md:h-[60px]"}>
-                    <p>Experience our seasonal menu in beautiful country surroundings. Eat the freshest produce from the comfort of our farmhouse.</p>
-                </div>
-                <BookATable
-                    marginTop={"mt-[53px]"}
-                />
-            </div>
-            <div>
-            </div>
-        </div>
-        <div className={" max-w-screen flex flex-col"}>
+        <Header img={dine} />
+        <div className={" max-w-screen flex flex-col  "}>
             <div className={'relative bottom-20'}>
-                <div className={' hidden md:block'}>
+                <div className={' hidden md:block '}>
                     <div className={'baver_rectangle mt-3 '}></div>
                     <div className={'baver_rectangle mt-6'}></div>
                     <div className={'baver_rectangle mt-9'}></div>
@@ -152,6 +134,7 @@ export default function Home() {
                 alt = {"locally sourced"}
                 title1 = {"The most locally"}
                 title2 = {"sourced food."}
+                reversed = {true}
                 description = {"All our ingredients come directly from our farm or local fishery. So you can be sure that you’re eating the freshest, most sustainable food."}
             />
         </div>

@@ -25,12 +25,12 @@ export default function Footer(props) {
             <div className={'flex flex-col md:grid md:grid-cols-2 lg:justify-center lg:items-center mx-auto pt-[80px] '}>
                 <Image className={'md:ml-[39px] justify-center mx-auto '} src={dine} alt={"dine logo"}/>
                 <div className={'flex flex-col lg:grid lg:grid-cols-2 items-center justify-center'}>
-                <div className={'text-center md:text-start mt-[42px]'}>
+                    <div className={'md:w-full text-center md:text-start mt-[42px]'}>
                     <p>Marthwaite, Sedbergh</p>
                     <p className={'mt-[20px]'}>Cumbria</p>
                     <p className={'mt-[20px]'}>+00 44 123 4567</p>
                 </div>
-                <div className={'text-center md:text-start mt-[42px]'}>
+                <div className={'md:w-full  text-center md:text-start mt-[42px]'}>
                     <p>OPEN TIMES</p>
                     <p className={'mt-[20px]'}>MON - FRI: 09:00 AM - 10:00 PM</p>
                     <p className={'mt-[20px] pb-10'}>SAT - SUN: 09:00 AM - 11:30 PM</p>
