@@ -3,10 +3,7 @@
 @tailwind utilities;
 
 
-*{
-    margin: 0;
-    padding: 0;
-}
+
 
 @media (min-width: 1024px) {
     .headingXL{
@@ -78,15 +75,21 @@
         letter-spacing: -0.6px;
         @apply font-light;
     }
+    .headingL{
+        line-height: 40px;
+        letter-spacing: -0.4px;
+        font-size: 32px;
+        @apply font-bold;
+    }
     body{
         font-size: 20px;
         line-height: 30px;
         letter-spacing: 0px;
     }
     .headingM {
-        font-size: 48px;
-        line-height: 48px;
-        letter-spacing: -0.5px;
+        font-size: 20px;
+        line-height: 24px;
+        letter-spacing: -0.25px;
         @apply font-bold;
     }
 
@@ -96,99 +99,85 @@
         font-size: 17px;
         @apply font-semibold;
     }
+
+    .home_rectangle_top {
+        /* Rectangle */
+
+        position: absolute;
+        width: 895px;
+        height: 320px;
+        top: 155px;
+        right: 400px;
+
+        background: #5C6779;
+        mix-blend-mode: normal;
+        opacity: 0.08;
+        border-radius: 100px 0px 0px 0px;
+        transform: matrix(-1, 0, 0, 1, 0, 0);
+
+    }
+
+    .home_rectangle_bottom {
+        /* Rectangle */
+
+        position: absolute;
+        height: 320px;
+        top: 2025px;
+        right: 0px;
+        left: 400px;
+        z-index: -1;
+
+        background: #5C6779;
+        mix-blend-mode: normal;
+        opacity: 0.08;
+        border-radius: 0px 100px 0px 0px;
+        transform: matrix(-1, 0, 0, 1, 0, 0);
+
+    }
+
+    .baver_rectangle{
+        /* Rectangle */
+
+        position: absolute;
+        width: 160px;
+        height: 6px;
+        left: 568px;
+        top: 960px;
+        z-index: 10;
+
+        background: #9E7F66;
+
+    }
+
+    .family_gathering_rectangle {
+        /* Rectangle Copy 2 */
+
+        position: absolute;
+        width: 895px;
+        height: 320px;
+        right: 400px;
+        top: 3800px;
+
+        background: #5C6779;
+        mix-blend-mode: normal;
+        opacity: 0.08;
+        border-radius: 100px 0px 0px 0px;
+        transform: matrix(-1, 0, 0, 1, 0, 0);
+
+    }
 }
 
 
 
 
-/*.footer{*/
-/*    font-style: normal;*/
-/*    font-weight: 400;*/
-/*    font-size: 14px;*/
-/*    line-height: 28px;*/
-/*    !* or 200% *!*/
-/*    letter-spacing: 2px;*/
-/*    text-transform: uppercase;*/
-/*    color: #FFFFFF;*/
-/*}*/
+.footer{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 28px;
+    /* or 200% */
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
 
-/*.home_rectangle_top {*/
-/*    !* Rectangle *!*/
-
-/*    position: absolute;*/
-/*    width: 895px;*/
-/*    height: 320px;*/
-/*    top: 155px;*/
-/*    right: 400px;*/
-
-/*    background: #5C6779;*/
-/*    mix-blend-mode: normal;*/
-/*    opacity: 0.08;*/
-/*    border-radius: 100px 0px 0px 0px;*/
-/*    transform: matrix(-1, 0, 0, 1, 0, 0);*/
-
-/*}*/
-
-/*.home_rectangle_bottom {*/
-/*    !* Rectangle *!*/
-
-/*    position: absolute;*/
-/*    height: 320px;*/
-/*    top: 2025px;*/
-/*    right: 0px;*/
-/*    left: 400px;*/
-/*    z-index: -1;*/
-
-/*    background: #5C6779;*/
-/*    mix-blend-mode: normal;*/
-/*    opacity: 0.08;*/
-/*    border-radius: 0px 100px 0px 0px;*/
-/*    transform: matrix(-1, 0, 0, 1, 0, 0);*/
-
-/*}*/
-
-/*.baver_rectangle{*/
-/*    !* Rectangle *!*/
-
-/*    position: absolute;*/
-/*    width: 160px;*/
-/*    height: 6px;*/
-/*    left: 568px;*/
-/*    top: 960px;*/
-/*    z-index: 10;*/
-
-/*    background: #9E7F66;*/
-
-/*}*/
-
-/*.family_gathering_rectangle {*/
-/*    !* Rectangle Copy 2 *!*/
-
-/*    position: absolute;*/
-/*    width: 895px;*/
-/*    height: 320px;*/
-/*    right: 400px;*/
-/*    top: 3800px;*/
-
-/*    background: #5C6779;*/
-/*    mix-blend-mode: normal;*/
-/*    opacity: 0.08;*/
-/*    border-radius: 100px 0px 0px 0px;*/
-/*    transform: matrix(-1, 0, 0, 1, 0, 0);*/
-
-/*}*/
-
-
-/*.asdasdasd{*/
-/*    !* black *!*/
-
-/*    position: absolute;*/
-/*    left: 0%;*/
-/*    right: 0%;*/
-/*    top: 0%;*/
-/*    bottom: 0%;*/
-
-/*    background: #17192B;*/
-/*    mix-blend-mode: normal;*/
-
-/*}*/

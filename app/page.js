@@ -1,6 +1,6 @@
 "use client";
 import heroBgMobile from "../public/homepage/hero-bg-mobile@2x.jpg"
-import heroBgTablet from "../public/homepage/hero-bg-tablet.jpg"
+import heroBgTablet from "../public/homepage/hero-bg-tablet@2x.jpg"
 import heroBgDesktop from "../public/homepage/hero-bg-desktop.jpg"
 import Image from "next/image";
 import dine from "../public/logo.svg"
@@ -103,8 +103,8 @@ export default function Home() {
         {deviceSize === 'medium' && <Image src={heroBgTablet} alt={'herobg tablet'}/> }
         {deviceSize === 'small' && <Image src={heroBgMobile} alt={'herobg mobile'}/> }
         {/*Overlay elements*/}
-        <div className={'absolute text-white lg:items-start lg:w-1/3 bg-codGray  z-10 top-0      mt-[220px] md:mt-[374px] w-screen h-fit flex flex-col items-center lg:max-w-screen'}>
-            <div className={'mt-5 '}>
+        <div className={'absolute text-white lg:items-start lg:w-1/3 bg-codGray md:max-w-screen md:mx-auto z-10 top-0 mt-[220px] md:mt-[400px] w-full max-w-screen-xl h-fit flex flex-col items-center lg:max-w-screen'}>
+            <div className={'mt-5  '}>
                 <Image src={dine} alt={"dine logo"} />
             </div>
             <div className={"mt-3 "}>
@@ -114,7 +114,7 @@ export default function Home() {
                 </h1>
                 <h1 className={"headingXL"}>since 1989</h1>
             </div>
-                <div className={"text-center mt-[21px] md:w-[573px] md:h-[60px]"}>
+                <div className={"text-center mx-3 mt-[21px] md:w-[573px] md:h-[60px]"}>
                     <p>Experience our seasonal menu in beautiful country surroundings. Eat the freshest produce from the comfort of our farmhouse.</p>
                 </div>
                 <BookATable
@@ -145,7 +145,7 @@ export default function Home() {
             description = {"Our relaxed surroundings make dining with us a great experience for everyone. We can even arrange a tour of the farm before your meal."}
         />
             </div>
-            <div className={'hidden md:block home_rectangle_bottom'}>x
+            <div className={'hidden md:block home_rectangle_bottom'}>
             </div>
             <HomePageCard
                 png = {locallySourced}
@@ -216,9 +216,7 @@ export default function Home() {
                   </div>
               </div>
           </div>
-          <Footer
-           img = {readyBg}
-          />
+          <Footer img={readyBg}/>
       </>
   );
 }
