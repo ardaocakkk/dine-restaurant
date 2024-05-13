@@ -1,113 +1,224 @@
+"use client";
+import heroBgMobile from "../public/homepage/hero-bg-mobile@2x.jpg"
+import heroBgTablet from "../public/homepage/hero-bg-tablet.jpg"
+import heroBgDesktop from "../public/homepage/hero-bg-desktop.jpg"
 import Image from "next/image";
+import dine from "../public/logo.svg"
+import enjoyablePlaceMobile from "../public/homepage/enjoyable-place-mobile.jpg"
+import enjoyablePlaceDesktop from "../public/homepage/enjoyable-place-desktop.jpg"
+import enjoyablePlaceTablet from "../public/homepage/enjoyable-place-tablet.jpg"
+import HomePageCard from "@/app/ui/cards/HomePageCard";
+import locallySourcedMobile from "../public/homepage/locally-sourced-mobile.jpg"
+import locallySourcedDesktop from "../public/homepage/locally-sourced-desktop.jpg"
+import locallySourcedTablet from "../public/homepage/locally-sourced-tablet.jpg"
+import Divider from "@/app/ui/cards/Divider";
+import salmonMobile from "../public/homepage/salmon-mobile.jpg"
+import salmonDesktop from "../public/homepage/salmon-desktop-tablet.jpg"
+import salmonTablet from "../public/homepage/salmon-desktop-tablet.jpg"
+import MenuHighlightsItemCard from "@/app/ui/cards/MenuHighlightsItemCard";
+import beefMobile from "../public/homepage/beef-mobile.jpg"
+import beefDesktop from "../public/homepage/beef-desktop-tablet.jpg"
+import beefTablet from "../public/homepage/beef-desktop-tablet.jpg"
+import mousseMobile from "../public/homepage/chocolate-mobile.jpg"
+import mousseDesktop from "../public/homepage/chocolate-desktop-tablet.jpg"
+import mousseTablet from "../public/homepage/chocolate-desktop-tablet.jpg"
+import familyGatheringMobile from "../public/homepage/family-gathering-mobile.jpg"
+import familyGatheringDesktop from "../public/homepage/family-gathering-desktop.jpg"
+import familyGatheringTablet from "../public/homepage/family-gathering-tablet.jpg"
+import BookATable from "@/app/ui/cards/Buttons/BookATableButton";
+import readyBgMobile from "../public/homepage/ready-bg-mobile.jpg"
+import readyBgDesktop from "../public/homepage/ready-bg-desktop.jpg"
+import readyBgTablet from "../public/homepage/ready-bg-tablet.jpg"
+import Footer from "@/app/ui/Layout/Footer";
+import {useEffect, useState} from "react";
+import {ready} from "next/dist/build/output/log";
+
 
 export default function Home() {
+
+    const [deviceSize, setDeviceSize] = useState('');
+    const [heroBg, setHeroBg] = useState();
+    const [enjoyablePlace, setEnjoyablePlace] = useState();
+    const [locallySourced, setLocallySourced] = useState();
+    const [salmon, setSalmon] = useState();
+    const [beef, setBeef] = useState();
+    const [mousse, setMousse] = useState();
+    const [familyGathering, setFamilyGathering] = useState();
+    const [readyBg, setReadyBg] = useState();
+    useEffect(() => {
+        function handleResize() {
+            // Determine device size here (e.g., based on window.innerWidth)
+            const width = window.innerWidth;
+            if (width >= 1024) {
+
+                setDeviceSize('large');
+                setHeroBg(heroBgDesktop);
+                setEnjoyablePlace(enjoyablePlaceDesktop);
+                setLocallySourced(locallySourcedDesktop);
+                setSalmon(salmonDesktop);
+                setBeef(beefDesktop);
+                setMousse(mousseDesktop);
+                setFamilyGathering(familyGatheringDesktop);
+                setReadyBg(readyBgDesktop);
+            }else if(width <1024 && width >= 768){
+                setDeviceSize('medium');
+                setHeroBg(heroBgTablet);
+                setEnjoyablePlace(enjoyablePlaceTablet);
+                setLocallySourced(locallySourcedTablet);
+                setSalmon(salmonTablet);
+                setBeef(beefTablet);
+                setMousse(mousseTablet);
+                setFamilyGathering(familyGatheringTablet);
+                setReadyBg(readyBgTablet);
+            }
+            else {
+                setDeviceSize('small');
+                setHeroBg(heroBgMobile);
+                setEnjoyablePlace(enjoyablePlaceMobile);
+                setLocallySourced(locallySourcedMobile);
+                setSalmon(salmonMobile);
+                setBeef(beefMobile);
+                setMousse(mousseMobile);
+                setFamilyGathering(familyGatheringMobile);
+                setReadyBg(readyBgMobile);
+            }
+        }
+
+        // Initial call to handleResize
+        handleResize();
+
+        // Add event listener for window resize
+        window.addEventListener('resize', handleResize);
+
+        // Cleanup function to remove event listener
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+      <>
+    <div className={'relative lg:overflow-x-hidden'}>
+        {deviceSize === 'large' && <Image className={''} src={heroBgDesktop} alt={'herobg desktop'}/> }
+        {deviceSize === 'medium' && <Image src={heroBgTablet} alt={'herobg tablet'}/> }
+        {deviceSize === 'small' && <Image src={heroBgMobile} alt={'herobg mobile'}/> }
+        {/*Overlay elements*/}
+        <div className={'absolute text-white lg:items-start lg:w-1/3 bg-codGray  z-10 top-0      mt-[220px] md:mt-[374px] w-screen h-fit flex flex-col items-center lg:max-w-screen'}>
+            <div className={'mt-5 '}>
+                <Image src={dine} alt={"dine logo"} />
+            </div>
+            <div className={"mt-3 "}>
+            <div className={"flex  flex-col   items-center "}>
+                <h1 className={"headingXL"}>
+                    Exquisite dining
+                </h1>
+                <h1 className={"headingXL"}>since 1989</h1>
+            </div>
+                <div className={"text-center mt-[21px] md:w-[573px] md:h-[60px]"}>
+                    <p>Experience our seasonal menu in beautiful country surroundings. Eat the freshest produce from the comfort of our farmhouse.</p>
+                </div>
+                <BookATable
+                    marginTop={"mt-[53px]"}
+                />
+            </div>
+            <div>
+            </div>
         </div>
-      </div>
+        <div className={" max-w-screen flex flex-col"}>
+            <div className={'relative bottom-20'}>
+                <div className={' hidden md:block'}>
+                    <div className={'baver_rectangle mt-3 '}></div>
+                    <div className={'baver_rectangle mt-6'}></div>
+                    <div className={'baver_rectangle mt-9'}></div>
+                    <div className={'baver_rectangle mt-12'}></div>
+                    <div className={'baver_rectangle mt-15'}></div>
+                    <div className={'baver_rectangle mt-18'}></div>
+                </div>
+                <div className={'hidden md:block home_rectangle_top'}>
+                </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
+        <HomePageCard
+         png = {enjoyablePlace}
+            alt = {"enjoyable place"}
+         title1 = {"Enjoyable place"}
+         title2 = {"for all the family."}
+            description = {"Our relaxed surroundings make dining with us a great experience for everyone. We can even arrange a tour of the farm before your meal."}
         />
-      </div>
+            </div>
+            <div className={'hidden md:block home_rectangle_bottom'}>x
+            </div>
+            <HomePageCard
+                png = {locallySourced}
+                alt = {"locally sourced"}
+                title1 = {"The most locally"}
+                title2 = {"sourced food."}
+                description = {"All our ingredients come directly from our farm or local fishery. So you can be sure that you’re eating the freshest, most sustainable food."}
+            />
+        </div>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+    </div>
+          <div className={'max-w-screen h-fit bg-codGray mt-[90.5px] text-white md:ml-[123px] lg:m-0 lg:max-w-screen'}>
+              <div className={'flex justify-center mx-[24px] pt-[82.5px]'}>
+                  <Divider/>
+              </div>
+                <div className={'flex flex-col justify-center mx-4 pt-[82.5px]'}>
+                    <h1 className={'headingL text-center md:w-[445px] md:h-[96px] mx-auto'}>A few highlights from our menu</h1>
+                    <div className={'text-center max-w-screen  mt-[13px] md:w-[445px] md:h-[90px] mx-auto'}>
+                        <p>We cater for all dietary requirements, but here’s a glimpse at some of our diner’s favourites. Our menu is revamped every season.</p>
+                    </div>
+                    <MenuHighlightsItemCard
+                      title = {"Seared Salmon Fillet"}
+                      img = {salmon}
+                        alt = {"salmon"}
+                      description = {"Our locally sourced salmon served \n" +
+                          "with a refreshing buckwheat summer salad."}
+                    />
+                    <Divider/>
+                    <MenuHighlightsItemCard
+                        title = {"Rosemary Filet Mignon"}
+                        img = {beef}
+                        alt = {"beef"}
+                        description = {"Our prime beef served to your taste with a delicious choice of seasonal sides."}/>
+                    <Divider/>
+                    <MenuHighlightsItemCard
+                        title = {"Summer Fruit Chocolate Mousse"}
+                        img = {mousse}
+                        alt = {"mousse"}
+                        description = {"Creamy mousse combined with summer fruits and dark chocolate shavings."}
+                    />
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+                </div>
+          </div>
+          <div className={'w-full h-fit md:mt-[167px]'}>
+              <div className={'family_gathering_rectangle hidden md:block'}></div>
+              <div className={'mt-[90.5px] '}>
+                  <Image src={familyGathering} className={"mx-auto"} alt={"family gathering"}/>
+                  <div className={'text-center mt-[49px]'}>
+                      <div className={'flex flex-col md:flex-row justify-between mx-[40px]'}>
+                      <div className={'mt-4'}>
+                      <h1 className={'headingS'}>FAMILY GATHERING</h1>
+                      <div className={'w-1/3 border-b border-b-beaver mx-auto'}></div>
+                      </div>
+                          <h1 className={'headingS mt-4 text-shuttleGray'}>SPECIAL EVENTS</h1>
+                      <h1 className={'headingS mt-4 text-shuttleGray'}>SOCIAL EVENTS</h1>
+                      </div>
+                      <div className={'mt-7'}>
+                          <h1 className={'headingL '}>Family Gathering</h1>
+                          <div className={'mt-3 md:w-[457px] md:h-[90px] md:mx-auto'}>
+                              <p>We love catering for entire families. So please bring everyone along for a special meal with your loved ones. We’ll provide a memorable experience for all.</p>
+                          </div>
+                          <div className={'mb-[128px]'}>
+                          <BookATable
+                           marginTop={"mt-[27px]"}
+                          />
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <Footer
+           img = {readyBg}
+          />
+      </>
   );
 }
