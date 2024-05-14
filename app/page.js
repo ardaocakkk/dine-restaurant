@@ -25,6 +25,12 @@ import mousseTablet from "../public/homepage/chocolate-desktop-tablet.jpg"
 import familyGatheringMobile from "../public/homepage/family-gathering-mobile.jpg"
 import familyGatheringDesktop from "../public/homepage/family-gathering-desktop.jpg"
 import familyGatheringTablet from "../public/homepage/family-gathering-tablet.jpg"
+import specilaEventsMobile from "../public/homepage/special-events-mobile.jpg"
+import specialEventsDesktop from "../public/homepage/special-events-desktop.jpg"
+import specialEventsTablet from "../public/homepage/special-events-tablet.jpg"
+import socialEventsMobile from "../public/homepage/social-events-mobile.jpg"
+import socialEventsDesktop from "../public/homepage/social-events-desktop.jpg"
+import socialEventsTablet from "../public/homepage/social-events-tablet.jpg"
 import BookATable from "@/app/ui/cards/Buttons/BookATableButton";
 import readyBgMobile from "../public/homepage/ready-bg-mobile.jpg"
 import readyBgDesktop from "../public/homepage/ready-bg-desktop.jpg"
@@ -45,8 +51,18 @@ export default function Home() {
     const [salmon, setSalmon] = useState();
     const [beef, setBeef] = useState();
     const [mousse, setMousse] = useState();
+    const [specialEvents, setSpecialEvents] = useState();
+    const [socialEvents, setSocialEvents] = useState();
     const [familyGathering, setFamilyGathering] = useState();
     const [readyBg, setReadyBg] = useState();
+    const [tabOrder, setTabOrder] = useState(0);
+
+
+    function toggleTab(num) {
+        setTabOrder(num);
+        console.log(num)
+    }
+
     useEffect(() => {
         function handleResize() {
             // Determine device size here (e.g., based on window.innerWidth)
@@ -59,6 +75,8 @@ export default function Home() {
                 setLocallySourced(locallySourcedDesktop);
                 setSalmon(salmonDesktop);
                 setBeef(beefDesktop);
+                setSpecialEvents(specialEventsDesktop);
+                setSocialEvents(socialEventsDesktop)
                 setMousse(mousseDesktop);
                 setFamilyGathering(familyGatheringDesktop);
                 setReadyBg(readyBgDesktop);
@@ -70,6 +88,8 @@ export default function Home() {
                 setSalmon(salmonTablet);
                 setBeef(beefTablet);
                 setMousse(mousseTablet);
+                setSpecialEvents(specialEventsTablet);
+                setSocialEvents(socialEventsTablet)
                 setFamilyGathering(familyGatheringTablet);
                 setReadyBg(readyBgTablet);
             }
@@ -81,6 +101,8 @@ export default function Home() {
                 setSalmon(salmonMobile);
                 setBeef(beefMobile);
                 setMousse(mousseMobile);
+                setSocialEvents(socialEventsMobile);
+                setSpecialEvents(specilaEventsMobile);
                 setFamilyGathering(familyGatheringMobile);
                 setReadyBg(readyBgMobile);
             }
@@ -100,7 +122,7 @@ export default function Home() {
 
   return (
       <>
-    <div className={'relative lg:overflow-x-hidden'}>
+    <div className={'relative lg:overflow-x-hidden lg:overflow-y-hidden'}>
         {deviceSize === 'large' && <Image className={''} src={heroBgDesktop} alt={'herobg desktop'}/> }
         {deviceSize === 'medium' && <Image src={heroBgTablet} alt={'herobg tablet'}/> }
         {deviceSize === 'small' && <Image src={heroBgMobile} alt={'herobg mobile'}/> }
@@ -140,7 +162,7 @@ export default function Home() {
         </div>
 
     </div>
-          <div className={'max-w-screen h-fit bg-codGray mt-[90.5px] text-white md:ml-[123px] lg:m-0 lg:max-w-screen'}>
+          <div className={'max-w-screen  h-fit bg-codGray mt-[90.5px] text-white md:ml-[123px] lg:m-0 lg:max-w-screen '}>
               <div className={'flex justify-center mx-[24px] pt-[82.5px]'}>
                   <Divider/>
               </div>
@@ -172,33 +194,78 @@ export default function Home() {
 
                 </div>
           </div>
-          <div className={'w-full h-fit md:mt-[167px]'}>
-              <div className={'family_gathering_rectangle hidden md:block'}></div>
-              <div className={'mt-[90.5px] '}>
-                  <Image src={familyGathering} className={"mx-auto"} alt={"family gathering"}/>
-                  <div className={'text-center mt-[49px]'}>
-                      <div className={'flex flex-col md:flex-row justify-between mx-[40px]'}>
-                      <div className={'mt-4'}>
-                      <h1 className={'headingS'}>FAMILY GATHERING</h1>
-                      <div className={'w-1/3 border-b border-b-beaver mx-auto'}></div>
+          <div className={'w-full h-fit md:mt-[167px] lg:mb-[160px] lg:max-w-screen-xl lg:mx-auto'}>
+              <div className={'family_gathering_rectangle hidden md:block lg:m-0'}></div>
+              <div className={'mt-[90.5px] lg:flex lg:mx-auto  '}>
+                  {tabOrder === 0 && <Image src={familyGathering} className={"mx-auto"} alt={"family gathering"}/>}
+                  {tabOrder === 1 && <Image src={specialEvents} className={"mx-auto"} alt={"special events"}/>}
+                    {tabOrder === 2 && <Image src={socialEvents} className={"mx-auto"} alt={"social events"}/>}
+                  <div className={'text-center mt-[49px] lg:text-start'}>
+                      <div className={'flex flex-col md:flex-row justify-between mx-[40px] lg:hidden'}>
+                      <div className={'my-auto'}>
+                      <button onClick={() => toggleTab(0)} ><h1 className={`headingS ${tabOrder === 0 ? '' : 'text-shuttleGray'} `}>FAMILY GATHERING</h1></button>
+                      <div className={`w-1/3 border-b border-b-beaver mx-auto ${tabOrder === 0 ? 'block' : 'hidden'}`}></div>
                       </div>
-                          <h1 className={'headingS mt-4 text-shuttleGray'}>SPECIAL EVENTS</h1>
-                      <h1 className={'headingS mt-4 text-shuttleGray'}>SOCIAL EVENTS</h1>
+                          <div className={'my-auto'}>
+                          <button onClick={() => toggleTab(1)} > <h1 className={`headingS ${tabOrder === 1 ? '' : 'text-shuttleGray'} `}>SPECIAL EVENTS</h1></button>
+                          <div className={`w-1/3 border-b border-b-beaver mx-auto ${tabOrder === 1 ? 'block' : 'hidden'}`}></div>
+                          </div>
+                          <div className={'my-auto'}>
+                      <button onClick={() => toggleTab(2)} ><h1 className={`headingS ${tabOrder === 2 ? '' : 'text-shuttleGray'} `}>SOCIAL EVENTS</h1></button>
+                              <div className={`w-1/3 border-b border-b-beaver mx-auto ${tabOrder === 2 ? 'block' : 'hidden'}`}></div>
+                          </div>
                       </div>
                       <div className={'mt-7'}>
-                          <h1 className={'headingL '}>Family Gathering</h1>
-                          <div className={'mt-3 md:w-[457px] md:h-[90px] md:mx-auto'}>
-                              <p>We love catering for entire families. So please bring everyone along for a special meal with your loved ones. We’ll provide a memorable experience for all.</p>
-                          </div>
+                          {tabOrder === 0 &&
+                              <>
+                              <h1 className={'headingL '}>Family Gathering</h1>
+                              <div className={`mt-3 md:w-[457px] md:h-[90px] md:mx-auto  `}>
+                          <p>We love catering for entire families. So please bring everyone along for a special meal with your loved ones. We’ll provide a memorable experience for all.</p>
+                      </div>
+                              </>
+                          }
+                          {tabOrder === 1 &&
+                              <>
+                                  <h1 className={'headingL '}>Special Events</h1>
+                                  <div className={'mt-3 md:w-[457px] md:h-[90px] md:mx-auto'}>
+                                      <p>Whether it’s a romantic dinner or special date you’re celebrating with others we’ll look after you. We’ll be sure to mark your special date with an unforgettable meal.</p>
+                                  </div>
+                              </>
+                          }
+                          {tabOrder === 2 &&
+                              <>
+                                  <h1 className={'headingL '}>Social Events</h1>
+                                  <div className={'mt-3 md:w-[457px] md:h-[90px] md:mx-auto'}>
+                                      <p>Are you looking to have a larger social event? No problem! We’re more than happy to cater for big parties. We’ll work with you to make your event a hit with everyone.</p>
+                                  </div>
+                              </>
+                          }
                           <div className={'mb-[128px]'}>
                           <BookATable
                            marginTop={"mt-[27px]"}
                           />
+                              <div className={'flex-col md:flex-row justify-between  hidden lg:block lg:mt-[60px]'}>
+                                  <div className={'mt-4 flex-col'}>
+                                      <div>
+                                     <button onClick={() => toggleTab(0)}> <h1 className={`headingS ${tabOrder === 0 ? '' : 'text-shuttleGray'} `}>FAMILY GATHERING</h1></button>
+                                      <div className={`w-2/3 border-b border-b-beaver ${tabOrder === 0 ? 'block' : 'hidden'}`}></div>
+                                      </div>
+                                      <div className={'mt-[12px]'}>
+                                  <button onClick={() => toggleTab(1)}><h1 className={`headingS ${tabOrder === 1 ? '' : 'text-shuttleGray'} `}>SPECIAL EVENTS</h1></button>
+                                          <div className={`w-2/3 border-b border-b-beaver ${tabOrder === 1 ? 'block' : 'hidden'}`}></div>
+                                      </div>
+                                      <div className={'mt-3'}>
+                                  <button onClick={() => toggleTab(2)}><h1 className={`headingS ${tabOrder === 2 ? '' : 'text-shuttleGray'} `}>SOCIAL EVENTS</h1></button>
+                                          <div className={`w-2/3 border-b border-b-beaver ${tabOrder === 2 ? 'block' : 'hidden'}`}></div>
+                                      </div>
+                                  </div>
+                              </div>
                           </div>
                       </div>
                   </div>
               </div>
           </div>
+
           <Footer img={readyBg}/>
       </>
   );
