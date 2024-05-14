@@ -4,7 +4,7 @@ import dine from "@/public/logo.svg";
 export default function Footer(props) {
     return <>
         <footer className={'w-full '}>
-        <div className={'relative w-full h-fit'}>
+        <div className={`relative w-full h-fit ${props.isBooking === true ? 'hidden' : ''} `}>
             <Image className={'w-full'} src={props.img} alt={"ready"} />
             <div className={'absolute inset-0 flex flex-col items-center justify-center text-white z-10  '}>
                     <div className={"mt-[64px]  justify-center items-center text-center"}>
