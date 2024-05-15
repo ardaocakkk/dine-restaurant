@@ -1,13 +1,15 @@
 import Image from "next/image";
 import dine from "@/public/logo.svg";
+import Link from "next/link";
 
 export default function Footer(props) {
     return <>
         <footer className={'w-full '}>
         <div className={`relative w-full h-fit ${props.isBooking === true ? 'hidden' : ''} `}>
-            <Image className={'w-full'} src={props.img} alt={"ready"} />
+            <Image className={'w-full'} src={props.img} alt={"ready"}  />
             <div className={'absolute inset-0 flex flex-col items-center justify-center text-white z-10  '}>
                     <div className={"mt-[64px]  justify-center items-center text-center"}>
+                        <Link href={"/booking"}>
                     <div className={"flex flex-col items-center"}>
                         <h1 className={"headingL"}>
                             Ready to make a reservation?
@@ -16,6 +18,7 @@ export default function Footer(props) {
                             <h1 className={"headingS justify-center m-auto "}> BOOK A TABLE </h1>
                         </button>
                     </div>
+                        </Link>
                 </div>
                 <div>
                 </div>
