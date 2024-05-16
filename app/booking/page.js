@@ -86,18 +86,18 @@ export default function Booking() {
 
             </div>
             {/*form*/}
-            <div className={'relative w-[327px] h-[370px] form-shadow mb-3 lg:mb-5 mx-auto lg:m-0'}>
-                <div className={'bottom-24 lg:right-0 px-4 py-4 bg-white relative text-white text-center items-center mx-auto justify-center  w-full'}>
-                    <div className={''}>
+            <div className={'relative w-[327px] md:w-[540px] h-[370px] form-shadow mb-3 lg:mb-5 mx-auto lg:m-0 lg:mx-auto lg:left-1/4 lg:bottom-[500px]'}>
+                <div className={'bottom-24  px-4 py-4 bg-white relative text-white text-center items-center mx-auto justify-center   w-full'}>
+                    <div className={'text-black px-3'}>
                         <Input variant='flushed' placeholder='Name' />
                     </div>
-                    <div className={'mt-3 px-3'}>
+                    <div className={'mt-3 px-3 text-black'}>
                         <Input variant='flushed' placeholder='Email' />
                     </div>
                     <div className={'mt-3 text-black px-2'}>
                         <h1 className={'text-start'}>Pick a Date</h1>
                         <div className={'flex px-2'}>
-                            <div className={''}>
+                            <div className={'text-black'}>
                             <Input variant='flushed' placeholder='MM'  />
                             </div>
                             <div className={'mx-2'}>
@@ -120,8 +120,8 @@ export default function Booking() {
                             <div className={'flex'}>
                                 <InputGroup >
                                     <Select>
-                                        <option value="am">am</option>
-                                        <option value="pm">pm</option>
+                                        <option value="am" className={'text-black'}>am</option>
+                                        <option value="pm" className={'text-black'}>pm</option>
                                     </Select>
 
                                 </InputGroup>
@@ -130,7 +130,7 @@ export default function Booking() {
                     </div>
                     <div className={'mt-3'}>
                         <div className={'flex justify-between px-3'}>
-                            <Image onClick={decrement} src={minus} alt={"minus icon"} className={'w-[full] h-full my-auto cursor-pointer'} />
+                            <Image onClick={decrement} src={minus} alt={"minus icon"} className={'w-[full] h-full my-auto cursor-pointer '} />
                             <h1 className={'text-black headingL m-auto'}> {peopleSize} people</h1>
                            <Image onClick={increment} src={plus} alt={"plus icon"} className={'w-[full] h-full my-auto cursor-pointer'}/>
                         </div>
